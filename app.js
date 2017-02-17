@@ -1,17 +1,19 @@
 var app = angular.module('flapperNews', []);
 
+app.factory('posts', [function(){
+    var o = {
+        posts: []
+    }
+    return o;
+}])
+
 app.controller('MainCtrl', [
 '$scope',
-function($scope){
-  $scope.test = 'Hello world!';
+'posts',
+function($scope, posts){
 
-  $scope.posts = [
-      {title: 'post 1', upvotes: 3},
-      {title: 'post 2', upvotes: 4},
-      {title: 'post 3', upvotes: 66666},
-      {title: 'post 4', upvotes: 7},
-      {title: 'post 5', upvotes: 5}
-  ];
+  // bind controller to posts array in service
+  $scope.posts = posts.posts;
 
   $scope.addPost = function() {
     // return if title is blank
