@@ -36,6 +36,7 @@ function($scope, posts){
     $scope.posts = posts.posts;
 
 $scope.addPost = function(){
+    if(!$scope.title || $scope.title === '') { return; }
     $scope.posts.push({
         title: $scope.title,
         link: $scope.link,
@@ -63,7 +64,7 @@ function($scope, $stateParams, posts){
     $scope.post = posts.posts[$stateParams.id];
 
     $scope.addComment = function(){
-        if($scope.body === '') { return; }
+        if(!$scope.body || $scope.body === '') { return; }
         $scope.post.comments.push({
             body: $scope.body,
             author: 'user',
